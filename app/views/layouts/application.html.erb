@@ -22,15 +22,19 @@
             <li class="nav-item">
               <%= link_to 'Home', root_path, class: 'btn' %>
             </li>
-            <li class="nav-item">
-              
-            </li>
-            <li class="nav-item">
-              
-            </li>
-            <li class="nav-item">
-              
-            </li>
+            
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn', style: 'margin-left:1500px' %>
+              </li>
+                <li class="nav-item"> 
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn' %> 
+              </li>
+              <% else %>
+              <li class="nav-item"> 
+                <%= link_to 'Sign in', new_user_session_path, class: 'btn', style: 'margin-left:1600px' %> 
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
