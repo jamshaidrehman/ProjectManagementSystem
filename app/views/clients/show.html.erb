@@ -1,0 +1,37 @@
+<div class="container", style="margin-top: 15px;">
+
+   <% if !flash[:notice].blank? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+   <% end %>
+
+   <h1 style="margin-top:20px">Client Detail</h1>
+
+   <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-info', style: 'margin-left:1000px' %> | 
+   <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>  | 
+   <%= link_to 'Back', clients_path, class: 'btn btn-success' %>
+
+   <p>
+     <strong>Name:</strong>
+     <%= @client.name %>
+   </p>
+
+   <p>
+     <strong>Email:</strong>
+     <%= @client.email %>
+   </p>
+
+   <p>
+     <strong>Contact No:</strong>
+     <%= @client.contact %>
+   </p>
+
+   <p>
+     <strong>Address:</strong>
+     <%= @client.address %>
+   </p>
+
+<br>
+
+</div>
