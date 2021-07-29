@@ -1,0 +1,26 @@
+<%= form_with model: [@client, @project] do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> </h2>
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :Title %>
+    <%= f.text_field :title, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Description %>
+    <%= f.text_area :description, class: 'form-control', required: true %>
+  </div>
+
+  <div class="actions", style="margin-top:10px">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -29,6 +29,7 @@
         <td><%= client.contact %></td>
         <td><%= client.address %></td>
         <td><%= link_to 'Show', client, class: "btn btn-info" %></td>
+        <td><%= link_to 'Project', client_projects_path(client), class: "btn btn-info" %></td>
     <% end %>
   </tbody>
 </table>

@@ -36,9 +36,8 @@ class ClientsController < ApplicationController
   def edit; end
 
   def destroy
-    if @client.destroy
+     @client.destroy
       flash[:notice] = "Your Client is successfully deleted"
-    end
 
     redirect_to root_path
   end
