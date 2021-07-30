@@ -1,0 +1,4 @@
+<%= form_with model: [@client, @project, @project.comments.build], remote: true do |f| %>
+<%= f.text_field :body %>
+<%= f.submit "comment" %>
+<% end %>

@@ -1,0 +1,12 @@
+<p style="margin-top:10px">
+<strong>Name:</strong>
+<%= current_user.email.split('@')[0].capitalize %>
+</p>
+
+<p>
+<strong>Comment:</strong>
+<%= comment.body %>
+</p>
+<%= time_ago_in_words(comment.created_at) %> ago
+
+<%= link_to 'Delete', client_project_comment_path(@client, @project, comment), method: :delete, data: {confirm: "Are you Sure?"}, class: 'btn' %>  

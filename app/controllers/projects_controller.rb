@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :update, :destroy, :edit]
   before_action :find_client
+  before_action :authenticate_user!
 
   def index
     @projects = Project.order(created_at: :desc)
@@ -35,8 +36,11 @@ class ProjectsController < ApplicationController
   def edit; end
 
   def destroy
-     @project.destroy
+    if @project.destroy
       flash[:notice] = "Your Project is successfully deleted"
+    else
+      flash[:notice] = "Your Project is not deleted"
+    end
 
     redirect_to client_projects_path
   end
