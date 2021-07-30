@@ -10,7 +10,7 @@
 
    <%= link_to 'Edit', edit_client_project_path(@client, @project), class: 'btn btn-info', style: 'margin-left:1000px' %> | 
    <%= link_to 'Destroy', client_project_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>  | 
-   <%= link_to 'Back', client_projects_path, class: 'btn btn-success' %>
+   <%= link_to 'Back', @client, class: 'btn btn-success' %>
 
    <p>
      <strong>Title:</strong>
