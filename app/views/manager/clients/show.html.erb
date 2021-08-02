@@ -8,10 +8,9 @@
 
    <h1 style="margin-top:20px">Client Detail</h1>
 
-   <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-info', style: 'margin-left:900px' %> | 
-   <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>  |
-   <%= link_to 'New Project', new_client_project_path(@client), class: 'btn btn-primary' %>  | 
-   <%= link_to 'Back', clients_path, class: 'btn btn-success' %>
+   <%= link_to 'Edit', edit_manager_client_path(@client), class: 'btn btn-info', style: 'margin-left:1000px' %> | 
+   <%= link_to 'Destroy', manager_client_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>  |
+   <%= link_to 'Back', manager_clients_path, class: 'btn btn-success' %>
 
    <p>
      <strong>Name:</strong>
@@ -53,7 +52,7 @@
         <tr>
           <td><%= project.title%></td>
           <td><%= project.description %></td>
-          <td><%= link_to 'Show', client_project_path(@client, project), class: "btn btn-info" %></td>
+          <td><%= link_to 'Show', manager_project_path(project), class: "btn btn-info" %></td>
       <% end %>
     </tbody>
   </table>

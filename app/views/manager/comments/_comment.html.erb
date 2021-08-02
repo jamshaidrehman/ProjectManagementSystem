@@ -9,4 +9,4 @@
 </p>
 <%= time_ago_in_words(comment.created_at) %> ago
 
-<%= link_to 'Delete', client_project_comment_path(@client, @project, comment), method: :delete, data: {confirm: "Are you Sure?"}, class: 'btn' %>  
+<%= link_to 'Delete', manager_project_comment_path(@project, comment), method: :delete, data: {confirm: "Are you Sure?"}, class: 'btn' %>  

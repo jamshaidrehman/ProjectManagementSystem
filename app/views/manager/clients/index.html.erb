@@ -7,9 +7,10 @@
 
 <h1 style="margin-top:20px">Clients</h1>
 
-<%= link_to 'New Client', new_client_path, class: 'btn btn-primary', style: 'margin-left:1170px' %>
+<%= link_to 'New Client', new_manager_client_path, class: 'btn btn-primary', style: 'margin-left:1170px' %>
 
 <table class="table ", style="margin-top:20px">
+  <h3 style="margin-top:20px">Total Clients: <%= @clients.count %></h3>
   <thead>
     <tr>
       <th>Name</th>
@@ -28,7 +29,7 @@
         <td><%= client.email %></td>
         <td><%= client.contact %></td>
         <td><%= client.address %></td>
-        <td><%= link_to 'Show', client, class: "btn btn-info" %></td>
+        <td><%= link_to 'Show', manager_client_path(client), class: "btn btn-info" %></td>
     <% end %>
   </tbody>
 </table>

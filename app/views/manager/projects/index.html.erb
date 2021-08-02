@@ -7,9 +7,10 @@
 
 <h1 style="margin-top:20px">Projects</h1>
 
-<%= link_to 'New Project', new_client_project_path, class: 'btn btn-primary', style: 'margin-left:1170px' %>
+<%= link_to 'New Project', new_manager_project_path, class: 'btn btn-primary', style: 'margin-left:1170px' %>
 
 <table class="table ", style="margin-top:20px">
+  <h3 style="margin-top:20px">Total Projects: <%= @projects.count %></h3>
   <thead>
     <tr>
       <th>Title</th>
@@ -24,11 +25,11 @@
       <tr>
         <td><%= project.title%></td>
         <td><%= project.description %></td>
-        <td><%= link_to 'Show', client_project_path(@client, project), class: "btn btn-info" %></td>
+        <td><%= link_to 'Show', manager_project_path(project), class: "btn btn-info" %></td>
+        <td><%= link_to 'Add Payment', new_manager_project_payment_path(project), class:"btn btn-info" %></td>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 </div>

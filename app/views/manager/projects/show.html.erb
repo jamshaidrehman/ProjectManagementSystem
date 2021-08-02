@@ -8,9 +8,9 @@
 
    <h1 style="margin-top:20px">Project Detail</h1>
 
-   <%= link_to 'Edit', edit_client_project_path(@client, @project), class: 'btn btn-info', style: 'margin-left:1000px' %> | 
-   <%= link_to 'Destroy', client_project_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>  | 
-   <%= link_to 'Back', @client, class: 'btn btn-success' %>
+   <%= link_to 'Edit', edit_manager_project_path(@project), class: 'btn btn-info', style: 'margin-left:1000px' %> | 
+   <%= link_to 'Destroy', manager_project_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>  | 
+   <%= link_to 'Back', manager_projects_path, class: 'btn btn-success' %>
 
    <p>
      <strong>Title:</strong>
@@ -24,11 +24,10 @@
    <br>
    
    <div id="comment">
-     <h2><%= @project.comments.count %> Comments</h2>
+    <h2> Comments</h2>
      <%= render @project.comments %>
    </div>
 
-   <h2 style="margin-top: 10px">Add Comments</h2>
-   <%= render 'comments/form' %>
-
+     <h2 style="margin-top: 10px">Add Comments</h2>
+     <%= render 'manager/comments/form' %>
 </div>

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   get 'projects/index'
-  devise_for :users
-  resources :clients do 
+  namespace :manager do
+    resources :clients
     resources :projects do
       resources :comments
+      resources :payments
     end
   end
-
-  root 'clients#index' 
+  devise_for :users
+  
+  root 'manager/clients#index' 
 end
