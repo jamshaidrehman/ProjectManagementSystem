@@ -36,11 +36,8 @@ module Manager
     def edit; end
 
     def destroy
-      if @project.destroy
-        flash[:notice] = "Your Project is successfully deleted"
-      else
-        flash[:notice] = "Your Project is not deleted"
-      end
+      @project.destroy
+      flash[:notice] = "Your Project is successfully deleted"
 
       redirect_to manager_projects_path
     end
@@ -48,7 +45,7 @@ module Manager
     private
 
     def project_params
-      params.require(:project).permit(:title, :description, :client_id)
+      params.require(:project).permit(:title, :description, :client_id, :file)
     end
 
     def find_project

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_055030) do
+ActiveRecord::Schema.define(version: 2021_08_03_073541) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_055030) do
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "file"
     t.index ["client_id"], name: "index_projects_on_client_id"
   end
 

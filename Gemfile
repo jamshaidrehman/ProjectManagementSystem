@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', '~> 4.2'
 
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
+
 gem 'jquery-rails'
 
 

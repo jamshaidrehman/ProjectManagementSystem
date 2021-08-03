@@ -37,11 +37,8 @@ module Manager
     def edit; end
 
     def destroy
-      if @client.destroy
-        flash[:notice] = "Your Client is successfully deleted"
-      else
-        flash[:notice] = "Your Client is not deleted"
-      end
+      @client.destroy
+      flash[:notice] = "Your Client is successfully deleted"
 
       redirect_to root_path
     end

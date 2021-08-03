@@ -12,11 +12,9 @@ module Manager
     def destroy
       @comment = Comment.find params[:id]
 
-      if @comment.destroy
-        flash[:notice] = "Your Comment is successfully deleted"
-      else
-        flash[:notice] = "Your Comment is not deleted"
-      end
+      @comment.destroy
+      flash[:notice] = "Your Comment is successfully deleted"
+      redirect_to manager_project_path(@project)
     end
 
     private

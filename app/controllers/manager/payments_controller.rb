@@ -11,7 +11,8 @@ module Manager
       @payment = @project.payments.new(payment_params)
 
       if @payment.save
-        redirect_to @project
+        flash[:notice] = "Your Payment is successfully Add"
+        redirect_to manager_project_path(@project)
       else
         render 'new'
       end
@@ -21,6 +22,8 @@ module Manager
       @payment = Payment.find params[:id]
 
       @payment.destroy
+      flash[:notice] = "Your Payment is successfully deleted"
+      redirect_to manager_project_path(@project)
     end
 
     private
