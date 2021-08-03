@@ -55,12 +55,14 @@
         </tbody>
       </table>
    <% end %>
-   
-   <div id="comment">
+
+   <div id="comments-section">
     <h2 style="margin-top: 40px"> Comments</h2>
      <%= render @project.comments %>
    </div>
 
-   <h2 style="margin-top: 20px">Add Comments</h2>
-   <%= render 'manager/comments/form' %>
+   <div id="comments-form">
+     <h2 style="margin-top: 20px">Add Comments</h2>
+     <%= render 'manager/comments/form' %>
+   </div>
 </div>

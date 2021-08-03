@@ -1,2 +1,7 @@
-$('#comment').append("<%= j render @project.comments.last %>");
-$('#comment_body').val('')
+<% if @comment.save %>
+  $('#comments-section').append("<%= j render @comment %>");
+  $('#comment_body').val('')
+<% else %>
+  $('#comments-form').html('<%= j render "manager/comments/form", comment: @comment %>')
+<% end %>
+

@@ -4,16 +4,18 @@ module Manager
     before_action :authenticate_user!
 
     def create
-      @comment = @project.comments.new(comment_params)
-      @comment.user_id = current_user.id
-      @comment.save
+      @comment = @project.comments.new(comment_params.merge(user_id: current_user.id))
     end
 
     def destroy
       @comment = Comment.find params[:id]
 
-      @comment.destroy
-      flash[:notice] = "Your Comment is successfully deleted"
+      if @comment.destroy
+        flash[:notice] = "Your Comment is successfully deleted."
+      else
+        flash[:error] = @comment.errors.full_messages.to_sentence
+      end
+
       redirect_to manager_project_path(@project)
     end
 
@@ -26,6 +28,5 @@ module Manager
     def find_project
       @project = Project.find params[:project_id]
     end
-
   end
 end

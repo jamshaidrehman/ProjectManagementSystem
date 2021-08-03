@@ -1,6 +1,6 @@
 module Manager
   class ProjectsController < ApplicationController
-    before_action :find_project, only: [:show, :update, :destroy, :edit]
+    before_action :find_project, only: %i[show update destroy edit]
     before_action :authenticate_user!
 
     def index
@@ -15,17 +15,9 @@ module Manager
       @project = Project.new(project_params)
 
       if @project.save
-        flash[:notice] = "Your Project is successfully created"
-        redirect_to manager_project_path(@project)
-      else
-        render 'new'
-      end
-    end
+        flash[:notice] = "Your Project is successfully created."
 
-    def update
-      if @project.update project_params
-        flash[:notice] = "Your Project is successfully updated"
-        redirect_to manager_project_path
+        redirect_to manager_project_path(@project)
       else
         render 'new'
       end
@@ -35,9 +27,22 @@ module Manager
 
     def edit; end
 
+    def update
+      if @project.update project_params
+        flash[:notice] = "Your Project is successfully updated."
+
+        redirect_to manager_project_path
+      else
+        render 'new'
+      end
+    end
+
     def destroy
-      @project.destroy
-      flash[:notice] = "Your Project is successfully deleted"
+      if @project.destroy
+        flash[:notice] = "Your Project is successfully deleted."
+      else
+        flash[:error] = @project.errors.full_messages.to_sentence
+      end
 
       redirect_to manager_projects_path
     end

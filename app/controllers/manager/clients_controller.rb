@@ -1,9 +1,8 @@
 module Manager
   class ClientsController < ApplicationController
-    
-    before_action :find_client, only: [:show, :update, :edit, :destroy]
-    before_action :authenticate_user!, except: [:show, :index]
-    
+    before_action :find_client, only: %i[show update edit destroy]
+    before_action :authenticate_user!
+
     def index
       @clients = Client.order(created_at: :desc)
     end
@@ -16,19 +15,11 @@ module Manager
       @client = Client.new(client_params)
 
       if @client.save
-        flash[:notice] = "Your Client is successfully created"
+        flash[:notice] = "Your Client is successfully created."
+
         redirect_to manager_client_path(@client)
       else
         render 'new'
-      end
-    end
-
-    def update
-      if @client.update client_params
-        flash[:notice] = "Your Client is successfully updated"
-        redirect_to manager_client_path(@client)
-      else
-        render 'edit'
       end
     end
 
@@ -36,9 +27,22 @@ module Manager
 
     def edit; end
 
+    def update
+      if @client.update client_params
+        flash[:notice] = "Your Client is successfully updated."
+
+        redirect_to manager_client_path(@client)
+      else
+        render 'edit'
+      end
+    end
+
     def destroy
-      @client.destroy
-      flash[:notice] = "Your Client is successfully deleted"
+      if @client.destroy
+        flash[:notice] = "Your Client is successfully deleted."
+      else
+        flash[:error] = @client.errors.full_messages.to_sentence
+      end
 
       redirect_to root_path
     end
