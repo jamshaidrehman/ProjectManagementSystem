@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   has_many :comments
 
+  ROLE= {
+            admin: 'Admin' ,
+            manager: 'Manager',
+            member: 'Member'
+        }
+
+  enum role: ROLE
+
 end

@@ -1,10 +1,4 @@
 <div class="container", style="margin-top: 15px;">
-   <% if !flash[:notice].blank? %>
-    <div class="alert alert-success" role="alert">
-      <%= flash[:notice] %>
-    </div>
-   <% end %>
-
    <h1 style="margin-top:20px">Project Detail</h1>
 
    <%= link_to 'Edit', edit_manager_project_path(@project), class: 'btn btn-info', style: 'margin-left:900px' %> | 

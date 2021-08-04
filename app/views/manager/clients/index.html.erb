@@ -1,10 +1,4 @@
 <div class="container">
-  <% if !flash[:notice].blank? %>
-    <div class="alert alert-success" role="alert", style="margin-top:10px">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
   <h1 style="margin-top:20px">Clients</h1>
 
   <%= link_to 'New Client', new_manager_client_path, class: 'btn btn-primary', style: 'margin-left:1170px' %>

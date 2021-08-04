@@ -5,4 +5,5 @@ class Client < ApplicationRecord
   validates :contact, length: {maximum: 11}
 
   has_many :projects
+
 end
