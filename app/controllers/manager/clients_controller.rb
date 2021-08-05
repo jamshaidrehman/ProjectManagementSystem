@@ -1,5 +1,5 @@
 module Manager
-  class ClientsController < ApplicationController
+  class ClientsController < BaseController
     before_action :find_client, only: %i[show update edit destroy]
     before_action :authenticate_user!
 

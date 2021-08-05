@@ -40,6 +40,8 @@ gem 'devise', '~> 4.2'
 
 gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 
+gem "letter_opener", :group => :development
+
 gem 'jquery-rails'
 
 

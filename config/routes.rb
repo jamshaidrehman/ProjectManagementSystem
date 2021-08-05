@@ -14,5 +14,5 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'manager/clients#index'
+  root 'admin/users#index'
 end

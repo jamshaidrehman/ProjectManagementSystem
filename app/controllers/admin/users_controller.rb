@@ -1,5 +1,5 @@
 module Admin
-  class UsersController < ApplicationController
+  class UsersController < BaseController
     before_action :find_user, only: %i[show update edit destroy]
     before_action :authenticate_user!
 

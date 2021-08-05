@@ -1,5 +1,5 @@
 module Manager
-  class PaymentsController < ApplicationController
+  class PaymentsController < BaseController
     before_action :find_project
     before_action :authenticate_user!
 

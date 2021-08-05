@@ -1,5 +1,5 @@
 module Manager
-  class ProjectsController < ApplicationController
+  class ProjectsController < BaseController
     before_action :find_project, only: %i[show update destroy edit]
     before_action :authenticate_user!
 
