@@ -1,0 +1,22 @@
+<%= form_for([:member, @log]) do |f| %>
+  <%= render 'shared/errors', object: @log %>
+
+  <div class="field form-group">
+    <%= f.label :Select_Project %>
+    <%= f.select(:project_id, Project.all.collect { |p| [p.title, p.id] }, {:include_blank => true, :selected => f.object.project_id}, class:'form-control form-select') %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :Start_Time %>
+    <%= f.time_field :start_time, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :End_Time %>
+    <%= f.time_field :end_time, class: 'form-control', required: true %>
+  </div>
+
+  <div class="actions", style="margin-top:10px">
+    <%= f.submit %>
+  </div>
+<% end %>

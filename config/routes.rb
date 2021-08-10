@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
 
+  root 'pages#index'
+  resources :page
+
   namespace :admin do
-    resources :users
+    root 'users#index'
+
+    resources :users do
+      member do
+        get :activation
+      end
+    end
   end
 
   namespace :manager do
+    root 'clients#index'
     resources :clients
     resources :projects do
       resources :comments
@@ -12,7 +22,10 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  namespace :member do
+    root 'member/time_logs#index'
+    resources :time_logs
+  end
 
-  root 'admin/users#index'
+  devise_for :users
 end

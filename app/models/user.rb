@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  mount_uploader :image, AttachmentUploader
 
   has_many :comments
 
@@ -13,5 +14,9 @@ class User < ApplicationRecord
         }
 
   enum role: ROLE
+
+  def active_for_authentication?
+    super && is_active?
+  end
 
 end

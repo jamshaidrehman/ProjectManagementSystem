@@ -24,6 +24,12 @@
           <td><%= user.role %></td>
           <td><%= user.address %></td>
           <td><%= link_to 'Show', admin_user_path(user), class: "btn btn-info" %></td>
+
+          <% if user.is_active? %>
+            <td><%= link_to 'Disable', activation_admin_user_path(user), class: "btn btn-info" %></td>
+          <% else %>
+            <td><%= link_to 'Enable', activation_admin_user_path(user), class: "btn btn-info" %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

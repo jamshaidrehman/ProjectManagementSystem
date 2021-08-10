@@ -1,0 +1,21 @@
+<div class="container", style="margin-top: 15px;">
+   <h1 style="margin-top:20px">Time Log Detail</h1>
+
+   <%= link_to 'Edit', edit_member_time_log_path(@log), class: 'btn btn-info', style: 'margin-left:1000px' %> | 
+   <%= link_to 'Destroy', member_time_log_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>  |
+   <%= link_to 'Back', member_time_logs_path, class: 'btn btn-success' %>
+
+   <p>
+     <strong>Project Name:</strong>
+     <%= @log.project.title %>
+   </p>
+
+   <p>
+     <strong>Start Time:</strong>
+     <%= @log.start_time.to_formatted_s(:time) %>
+   </p>
+
+   <p>
+     <strong>End Time:</strong>
+     <%= @log.end_time.to_formatted_s(:time) %>
+   </p>

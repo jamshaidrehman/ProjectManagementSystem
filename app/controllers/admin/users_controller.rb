@@ -1,6 +1,6 @@
 module Admin
   class UsersController < BaseController
-    before_action :find_user, only: %i[show update edit destroy]
+    before_action :find_user, only: %i[show update edit destroy activation]
     before_action :authenticate_user!
 
     def index
@@ -31,7 +31,7 @@ module Admin
     def update
       if @user.update user_params
         flash[:notice] = "Your User is successfully updated."
-        
+
         redirect_to admin_user_path(@user)
       else
         render 'edit'
@@ -39,16 +39,24 @@ module Admin
     end
 
     def destroy
-      @user.destroy
-      flash[:notice] = "Your user is successfully deleted"
+      if @user.destroy
+        flash[:notice] = "Your user is successfully deleted."
+      else
+        flash[:error] = @user.errors.full_messages.to_sentence
+      end
 
+      redirect_to admin_users_path
+    end
+
+    def activation
+      @user.update_attribute(:is_active, !@user.is_active)
       redirect_to admin_users_path
     end
 
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, :address)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, :image, :address)
     end
 
     def find_user
